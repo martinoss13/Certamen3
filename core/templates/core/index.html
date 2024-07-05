@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+    
+    <section id="tabla">
+        <h2>Produccion</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Codigo de Combustible</th>
+              <th scope="col">Litros</th>
+              <th scope="col">Fecha Produccion</th>
+              <th scope="col">Turno</th>
+              <th scope="col">Hora Registro</th>
+              <th scope="col">Operador</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for registro in registros %}
+            <tr>
+              <td>{{ registro.codigo_combustible }}</td>
+              <td>{{ registro.litros }}</td>
+              <td>{{ registro.hora_registro }}</td>
+              <td>{{ registro.fecha }}</td>
+              <td>{{ registro.trabajador }}</td>
+
+            </tr>
+            {% endfor %}
+          </tbody>
+    </section>
+          
+
+
+
+</body>
+{% endblock %}

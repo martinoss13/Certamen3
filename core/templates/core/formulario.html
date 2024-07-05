@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'nuevo_proyecto' %}" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="txtCodigo" class="form-label">Codigo Combustible</label>
+        <input type="text" class="form-control" id="txtCodigo" name="txtCodigo">
+    </div>
+    <div class="mb-3">
+        <label for="txtLitros" class="form-label">Litros</label>
+        <input type="text" class="form-control" id="txtLitros" name="txtLitros">
+    </div>
+        <input class="btn btn-primary" type="submit" value="Enviar">
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certamen 3</title>
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
+</head>
+<body>
+    <header>
+        <img id="enc"src="{% static 'media/ENC.jpg' %}" alt="ENC">
+        <h2>Empresa Nacional del Combustible</h2>
+        <div id="navbar">
+            <nav class="menubase">
+                <a href="#">Inicio</a>
+                <a href="#">Plantas</a>
+            </nav>
+        </div>
+        
+    </header>
+
+    {% block content %}
+
+    {% endblock %}
+    
+</body>
+</html>

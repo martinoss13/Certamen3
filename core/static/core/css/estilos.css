@@ -1,0 +1,27 @@
+header{
+height: auto;
+background-color: rgb(21, 220, 234);
+padding: 0 50px;
+color: black;
+display: flex;
+align-items: center;
+
+}
+
+#enc{
+
+    width: 50%;
+    max-width: 100px;
+}
+
+#navbar{
+
+    font-size: large;
+    margin-left: 5%;
+}
+
+#tabla{
+
+    align-self: center;
+    margin-top: 100px;
+}
