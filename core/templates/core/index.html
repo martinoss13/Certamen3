@@ -4,7 +4,6 @@
 {% block content %}
 
 <body>
-    
     <section id="tabla">
         <h2>Produccion</h2>
         <table class="table table-striped">
@@ -23,8 +22,9 @@
             <tr>
               <td>{{ registro.codigo_combustible }}</td>
               <td>{{ registro.litros }}</td>
-              <td>{{ registro.hora_registro }}</td>
               <td>{{ registro.fecha }}</td>
+              <td>{{ registro.trabajador.turno}}</td>
+              <td>{{ registro.hora_registro }}</td>
               <td>{{ registro.trabajador }}</td>
 
             </tr>

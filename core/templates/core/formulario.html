@@ -2,18 +2,20 @@
 {% load static %}
 
 {% block content %}
-<form action="{% url 'nuevo_proyecto' %}" method="post">
+<form method="post">
     {% csrf_token %}
-    <div class="mb-3">
-        <label for="txtCodigo" class="form-label">Codigo Combustible</label>
-        <input type="text" class="form-control" id="txtCodigo" name="txtCodigo">
-    </div>
-    <div class="mb-3">
-        <label for="txtLitros" class="form-label">Litros</label>
-        <input type="text" class="form-control" id="txtLitros" name="txtLitros">
-    </div>
-        <input class="btn btn-primary" type="submit" value="Enviar">
-
+    
+    <label for="codigo_combustible">Código de Combustible:</label><br>
+    <select id="codigo_combustible" name="codigo_combustible" required>
+        {% for codigo, label in registro.Combustible %}
+        <option value="{{ codigo }}">{{ label }}</option>
+        {% endfor %}
+    </select><br><br>
+    
+    <label for="litros">Litros:</label><br>
+    <input type="text" id="litros" name="litros" required><br><br>
+    
+    <button type="submit">Guardar</button>
 </form>
 
 {% endblock %}
