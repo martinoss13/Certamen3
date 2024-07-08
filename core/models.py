@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
+from django.conf import settings
 
 
 # Create your models here.
@@ -18,26 +19,25 @@ class Trabajador(models.Model):
         ('PM','TARDE'),
         ('MM','NOCHE')
         )
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="trabajador")
     turno = models.CharField(max_length=2, choices=Turno)
-    nombre = models.CharField(max_length=100)
     planta = models.ForeignKey(Planta, on_delete=models.CASCADE)
     
     def __str__(self) -> str:
-        return self.nombre
+        return self.user.username
     
     
-class Registro(models.Model):
-    Combustible = (
-        ('G93','GASOLINA93'),
-        ('G95','GASOLINA95'),
-        ('G97','GASOLINA97'),
-        ('DIE','DIESEL_C',),
-        ('DIP','DIESEL_AR'),
-        ('JA1','JET'),
-        ('AVG','AVGAS')
-        )
+class Combustible(models.Model):
+    nombre = models.CharField(max_length=100)
+    codigo = models.CharField(max_length=10)
+    planta = models.ForeignKey(Planta, on_delete=models.CASCADE)
 
-    codigo_combustible = models.CharField(max_length=3, choices = Combustible)
+    def __str__(self) -> str:
+        return self.nombre
+
+class Registro(models.Model):
+    
+    codigo_combustible = models.ForeignKey(Combustible, on_delete=models.CASCADE)
     litros = models.FloatField()
     hora_registro = models.DateTimeField(default=timezone.now)
     fecha = models.DateTimeField(default=timezone.now)

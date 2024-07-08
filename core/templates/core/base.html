@@ -13,13 +13,11 @@
     <header>
         <img id="enc"src="{% static 'media/ENC.jpg' %}" alt="ENC">
         <h2>Empresa Nacional del Combustible</h2>
-        <div id="navbar">
-            <nav class="menubase">
-                <a href="#">Inicio</a>
-                <a href="#">Plantas</a>
-            </nav>
-        </div>
-        
+        <nav id="navbar">
+            <a href="/admin">Admin</a>
+            <a href="/rest">Rest</a>
+
+        </nav>
     </header>
 
     {% block content %}

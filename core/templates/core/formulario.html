@@ -7,8 +7,8 @@
     
     <label for="codigo_combustible">Código de Combustible:</label><br>
     <select id="codigo_combustible" name="codigo_combustible" required>
-        {% for codigo, label in registro.Combustible %}
-        <option value="{{ codigo }}">{{ label }}</option>
+        {% for combustible in combustibles %}
+            <option value="{{ combustible.codigo }}">{{ combustible.nombre }}</option>
         {% endfor %}
     </select><br><br>
     

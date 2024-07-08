@@ -6,13 +6,15 @@
 <body>
     <section id="tabla">
         <h2>Produccion</h2>
+        {% if es_operador %}
+        <td><a class="btn btn-primary" href="{% url 'nuevo_registro' %}">Agregar Registro</a></td>
+        {% endif %}
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">Codigo de Combustible</th>
               <th scope="col">Litros</th>
               <th scope="col">Fecha Produccion</th>
-              <th scope="col">Turno</th>
               <th scope="col">Hora Registro</th>
               <th scope="col">Operador</th>
             </tr>
@@ -20,20 +22,22 @@
           <tbody>
             {% for registro in registros %}
             <tr>
-              <td>{{ registro.codigo_combustible }}</td>
+              <td>{{ registro.codigo_combustible.codigo }}</td>
               <td>{{ registro.litros }}</td>
               <td>{{ registro.fecha }}</td>
-              <td>{{ registro.trabajador.turno}}</td>
               <td>{{ registro.hora_registro }}</td>
-              <td>{{ registro.trabajador }}</td>
-
+              <td>{{ registro.trabajador}}</td>
+              {%if usuario == registro.trabajador%}
+              <td><a class="btn btn-primary" href="{% url 'editar_registro' registro.id %}">Editar</a></td>
+              
+              {% endif %}
+              
             </tr>
             {% endfor %}
+            
           </tbody>
+          
     </section>
           
-
-
-
 </body>
 {% endblock %}
